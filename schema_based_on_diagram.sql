@@ -10,3 +10,8 @@ CREATE TABLE invoices (id INT GENERATED ALWAYS AS IDENTITY,total_amount NUMERIC(
 
 CREATE TABLE invoice_items (id INT GENERATED ALWAYS AS IDENTITY, unit_price NUMERIC(5,2), quantity INT, total_price NUMERIC(5, 2), invoice_id INT, treatment_id INT, PRIMARY KEY(id), CONSTRAINT fk_invoice FOREIGN KEY(invoice_id) REFERENCES invoices(id), CONSTRAINT fk_treatment FOREIGN KEY(treatment_id) REFERENCES treatments(id));
 
+-- Indexes
+CREATE INDEX patient_id_asc ON medical_histories(patient_id ASC);
+CREATE INDEX invoice_id_asc ON invoice_items(invoice_id ASC);
+CREATE INDEX treatment_id_asc ON invoice_items(treatment_id ASC);
+CREATE INDEX medical_history_id_asc ON invoices(medical_history_id ASC);
